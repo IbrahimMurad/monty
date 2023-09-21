@@ -62,6 +62,15 @@ int read_file(FILE *m_file)
 	return (rtrn_value);
 }
 
+/**
+ * process_line - checks the opcode in the line and runs it if found
+ * @buf: a string that holds the line
+ * @line_num: the line number
+ * @mode: a reference to the current working mode (stack or queue)
+ * Return: R_SUCCESS in no opcode found and running opcode successfully
+ * or R_FAILURE if failed to run the opcode for any reason
+*/
+
 int process_line(char *buf, unsigned int line_num, int *mode)
 {
 	int opcode_code, rtrn_value = 0;

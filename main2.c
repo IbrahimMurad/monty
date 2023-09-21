@@ -40,6 +40,13 @@ int run_opcode(char *op_code, unsigned int line_num)
 	return (rtrn_value);
 }
 
+/**
+ * check_error - checks if errors exists before moving on
+ * @i: an integer indicating to the opcode
+ * @op_code: a string that holds the opcode
+ * @line_num: the line number
+ * Return: R_Success if no error or R_FAILURE if error exists
+*/
 
 int check_error(int i, char *op_code, unsigned int line_num)
 {
@@ -69,15 +76,22 @@ int check_error(int i, char *op_code, unsigned int line_num)
 				fprintf(stderr, "L%d: division by zero\n", line_num);
 				return (R_FAILURE);
 			}
-			break;		
+			break;
 		default:
 			rtrn_value = check_error2(i, line_num);
 	}
 	return (rtrn_value);
 }
 
+/**
+ * check_error2 - continues the error checking
+ * @i: an integer indicating to the opcode
+ * @line_num: the line number
+ * Return: R_Success if no error or R_FAILURE if error exists
+*/
+
 int check_error2(int i, unsigned int line_num)
-{	
+{
 	switch (i)
 	{
 		case S_POP:

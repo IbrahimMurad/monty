@@ -24,12 +24,28 @@ void s_swap(stack_t **h, unsigned int line_num)
 
 }
 
+/**
+ * s_rotl - rotates the stack to the top.
+ * @h: the address of a pointer to the head node of the stack
+ * @line_num: the line number
+ *
+ * Return: Nothing
+*/
 
 void s_rotl(stack_t **h, unsigned int line_num)
 {
 	(void) line_num;
 	(void) h;
 }
+
+
+/**
+ * s_rotr - rotates the stack to the bottom.
+ * @h: the address of a pointer to the head node of the stack
+ * @line_num: the line number
+ *
+ * Return: Nothing
+*/
 
 void s_rotr(stack_t **h, unsigned int line_num)
 {
