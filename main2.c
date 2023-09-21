@@ -69,8 +69,7 @@ int check_error(int i, char *op_code, unsigned int line_num)
 				fprintf(stderr, "L%d: division by zero\n", line_num);
 				return (R_FAILURE);
 			}
-			break;
-		
+			break;		
 		default:
 			rtrn_value = check_error2(i, line_num);
 	}
@@ -78,9 +77,16 @@ int check_error(int i, char *op_code, unsigned int line_num)
 }
 
 int check_error2(int i, unsigned int line_num)
-{
+{	
 	switch (i)
 	{
+		case S_POP:
+			if (head == NULL)
+			{
+				fprintf(stderr, "L%d: can't pop an empty stack\n", line_num);
+				return (R_FAILURE);
+			}
+			break;
 		case S_PINT:
 			if (head == NULL)
 			{
@@ -106,6 +112,10 @@ int check_error2(int i, unsigned int line_num)
 	return (R_SUCCESS);
 }
 
+/**
+ * free_list - frees the stack
+ * Retrun: Nothing
+*/
 
 void free_list(void)
 {

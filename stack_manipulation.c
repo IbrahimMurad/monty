@@ -57,6 +57,9 @@ void s_pop(stack_t **h, unsigned int line_num)
 	(void) line_num;
 	temp = *h;
 	*h = temp->next;
-	(*h)->prev = NULL;
+	if ((*h) != NULL)
+		(*h)->prev = NULL;
+	else
+		(*h) = NULL;
 	free(temp);
 }

@@ -29,12 +29,10 @@ void s_rotl(stack_t **h, unsigned int line_num)
 {
 	(void) line_num;
 	(void) h;
-	return;
 }
 
 void s_rotr(stack_t **h, unsigned int line_num)
 {
 	(void) line_num;
 	(void) h;
-	return;
 }
