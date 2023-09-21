@@ -34,8 +34,28 @@ void s_swap(stack_t **h, unsigned int line_num)
 
 void s_rotl(stack_t **h, unsigned int line_num)
 {
+	stack_t *temp;
+
 	(void) line_num;
-	(void) h;
+	if (head == NULL || head->next == NULL)
+	{
+		/* do nothing */
+		return;
+	}
+	else
+	{
+		temp = (*h)->next;
+		while (temp->next)
+		{
+			temp = temp->next;
+		}
+		temp->next = *h;
+		(*h)->prev = temp;
+		temp = (*h)->next;
+		(*h)->next = NULL;
+		temp->prev = NULL;
+		*h = temp;
+	}
 }
 
 
@@ -49,6 +69,25 @@ void s_rotl(stack_t **h, unsigned int line_num)
 
 void s_rotr(stack_t **h, unsigned int line_num)
 {
+	stack_t *temp;
+
 	(void) line_num;
-	(void) h;
+	if (head == NULL || head->next == NULL)
+	{
+		/* do nothing */
+		return;
+	}
+	else
+	{
+		temp = (*h)->next;
+		while (temp->next)
+		{
+			temp = temp->next;
+		}
+		temp->prev->next = NULL;
+		(*h)->prev = temp;
+		temp->prev = NULL;
+		temp->next = *h;
+		*h = temp;
+	}
 }
