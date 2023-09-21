@@ -145,22 +145,24 @@ int check_opcode(char *opcode_str)
 
 int add_node(char *value_str, int *mode, unsigned int line_num)
 {
-	int value;
+	int value, pm = 1, i = 0;
 	stack_t *new_node;
 
-	if (value_str[0] == '-' && isdigit(value_str[1]))
+	if (value_str[0] == '-')
 	{
-		value = -atoi(value_str + 1);
+		value_str = value_str + 1;
+		pm = -1;
 	}
-	else if (isdigit(value_str[0]))
+	while (value_str[i])
 	{
-		value = atoi(value_str);
+		if (!isdigit(value_str[i]))
+		{
+			fprintf(stderr, "L%d: usage: push integer\n", line_num);
+			return (R_FAILURE);
+		}
+		i++;
 	}
-	else
-	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_num);
-		return (R_FAILURE);
-	}
+	value = pm * atoi(value_str);
 	new_node = (stack_t *) malloc(sizeof(stack_t));
 	if (new_node == NULL)
 	{
